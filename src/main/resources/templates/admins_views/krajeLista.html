@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<button type="button"><a href="/przewoznikForm">Dodaj</a></button>
+<hr>
+<span th:if="${listaKraje.isEmpty()}">Brak krajów</span>
+<div th:each="kraj : ${listaKraje}">
+    <span th:text="*{kraj.nazwa}"></span>
+    <button type="button"><a th:href="@{'/krajForm?id=' + *{kraj.id}}">Edytuj</a></button>
+    <hr>
+</div>
+<button type="button"><a href="/krajForm">Dodaj</a></button>
+</body>
+</html>

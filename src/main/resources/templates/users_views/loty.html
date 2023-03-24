@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+  <span th:if="${loty.isEmpty()}">Brak lotów</span>
+  <div th:each="lot : ${loty}">
+    <hr>
+    Odlot z : <span th:text="*{lot.zmiasto.nazwa}"></span><br>
+    Lot do : <span th:text="*{lot.domiasto.nazwa}"></span><br>
+    Przewoznik : <span th:text="*{lot.przewoznik.nazwa}"></span><br>
+    Klasa : <span th:text="*{lot.klasa.nazwa}"></span><br>
+    Data : <span th:text="*{lot.data}"></span><br>
+    <hr>
+  </div>
+</body>
+</html>

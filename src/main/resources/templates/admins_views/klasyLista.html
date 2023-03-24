@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<button type="button"><a href="/przewoznikForm">Dodaj</a></button>
+<hr>
+<span th:if="${listaKlasy.isEmpty()}">Brak krajów</span>
+<div th:each="klasa : ${listaKlasy}">
+  <span th:text="*{klasa.nazwa}"></span>
+  <button type="button"><a th:href="@{'/klasaForm?id=' + *{klasa.id}}">Edytuj</a></button>
+  <hr>
+</div>
+<button type="button"><a href="/klasaForm">Dodaj</a></button>
+</body>
+</html>

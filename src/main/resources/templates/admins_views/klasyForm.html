@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<form method="get" action="editAddKlasa">
+    <div th:object="${klasa}">
+        <input type="number" th:field="*{id}" name="id" hidden>
+        Nazwa : <input type="text" th:field="*{nazwa}" name="nazwa"><br>
+    </div>
+    <input type="submit" value="Zapisz">
+</form>
+</body>
+</html>

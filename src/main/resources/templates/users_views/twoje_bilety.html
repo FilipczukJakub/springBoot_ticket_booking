@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<span th:if="${listaBilet.isEmpty()}">Nie masz żadnych biletów</span>
+<div th:each="bilet : ${listaBilet}">
+    <hr>
+    Odlot z : <span th:text="*{bilet.lot.zmiasto.nazwa}"></span><br>
+    Lot do : <span th:text="*{bilet.lot.domiasto.nazwa}"></span><br>
+    Przewoznik : <span th:text="*{bilet.lot.przewoznik.nazwa}"></span><br>
+    Klasa : <span th:text="*{bilet.lot.klasa.nazwa}"></span><br>
+    Data : <span th:text="*{bilet.lot.data}"></span><br>
+    <span th:if="*{bilet.lot.od_okna == true}">Od okna : Tak</span>
+    <span th:if="*{bilet.lot.od_okna == false}">Od okna : Nie</span>
+    Cena : <span th:text="*{bilet.cena}"></span><br>
+    <hr>
+</div>
+</body>
+</html>

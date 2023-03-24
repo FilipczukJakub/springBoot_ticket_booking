@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<form method="get" action="editAddLot">
+    <div th:object="${lot}">
+        <input type="number" th:field="*{id}" name="id" hidden>
+        Odlot z :
+        <select th:field="*{zmiasto}" name="zmiasto">
+            <option th:each="miasto : ${listaMiasta}"
+                    th:value="${miasto.id}"
+                    th:text="${miasto.nazwa}"></option>
+        </select><br>
+        Lot do :
+        <select th:field="*{domiasto}" name="domiasto">
+            <option th:each="miasto : ${listaMiasta}"
+                    th:value="${miasto.id}"
+                    th:text="${miasto.nazwa}"></option>
+        </select><br>
+        Przewoźnik :
+        <select th:field="*{przewoznik}" name="przewoznik">
+            <option th:each="przewoznik : ${listaPrzewoznicy}"
+                    th:value="${przewoznik.id}"
+                    th:text="${przewoznik.nazwa}"></option>
+        </select><br>
+        Klasa :
+        <select th:field="*{klasa}" name="klasa">
+            <option th:each="klasa : ${listaKlasy}"
+                    th:value="${klasa.id}"
+                    th:text="${klasa.nazwa}"></option>
+        </select><br>
+        <input type="date" th:field="*{data}" th:value="*{data}" name="data"><br>
+        Od okna : <input type="checkbox" th:field="*{od_okna}" name="od_okna" value="1">
+    </div>
+    <input type="submit" value="Zapisz">
+</form>
+</body>
+</html>

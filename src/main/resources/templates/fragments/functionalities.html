@@ -1,0 +1,19 @@
+<div th:fragment="functionalities" xmlns:sec="http://www.w3.org/1999/xhtml">
+  <div sec:authorize=" isAuthenticated()">
+    <div sec:authorize="hasRole('USER')">
+      <button><a href="zamow">Zamów bilet</a></button>
+      <button><a href="twoje_bilety">Twoje bilety</a></button>
+      <button><a href="loty">Lista lotów</a></button>
+    </div>
+    <div sec:authorize="hasRole('ADMIN')">
+      <button><a href="uzytkownicy">Użytkownicy</a></button>
+      <button><a href="miastaLista">Miasta</a></button>
+      <button><a href="krajeLista">Kraje</a></button>
+      <button><a href="przewoznicyLista">Przewoźnicy</a></button>
+      <button><a href="klasyLista">Klasy</a></button>
+      <button><a href="lotyLista">Loty</a></button>
+    </div>
+    <div sec:authorize="hasRole('USER') and hasRole('ADMIN')">Zalogowano jako superurzytkownik</div>
+  </div>
+  <hr>
+</div>

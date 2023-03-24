@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<span th:if="${listaUzytkownik.isEmpty()}">Brak uzytkowników</span>
+<div th:each="uzytkownik : ${listaUzytkownik}">
+    <hr>
+    Imie : <span th:text="*{uzytkownik.imie}"></span><br>
+    Nazwisko : <span th:text="*{uzytkownik.nazwisko}"></span><br>
+    Nazwa użytkownika : <span th:text="*{uzytkownik.username}"></span><br>
+    Email : <span th:text="*{uzytkownik.email}"></span><br>
+    Numer telefonu : <span th:text="*{uzytkownik.nr_tel}"></span><br>
+    <div th:each="rola : *{uzytkownik.role}">
+        <span th:text="*{rola.type}"></span>
+    </div>
+    <button type="button"><a th:href="@{'/zmienUprawnieniaUzytkownika?id=' + *{uzytkownik.id}}">Zmień uprawnienia użytkownika</a></button><br>
+    <span th:if="*{uzytkownik.enabled == true}">
+        Konto potwierdzone : Tak
+        <button type="button"><a th:href="@{'/zmienStanUzytkownika?id=' + *{uzytkownik.id}}">Zablokuj konto</a></button>
+    </span>
+    <span th:if="*{uzytkownik.enabled == false}">
+        Konto potwierdzone : Nie
+        <button type="button"><a th:href="@{'/zmienStanUzytkownika?id=' + *{uzytkownik.id}}">Potwierdź konto</a></button>
+    </span>
+    <br>
+    <hr>
+</div>
+</body>
+</html>

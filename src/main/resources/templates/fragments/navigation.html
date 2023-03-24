@@ -1,0 +1,16 @@
+<div th:fragment="navigation" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <button><a href="index">Strona główna</a></button>
+    <div th:if="!${#request.userPrincipal}">
+        <button><a href="register">Zarejestruj się</a> </button>
+        <button><a href="login">Zaloguj się</a> </button>
+    </div>
+    <div sec:authorize=" isAuthenticated()">
+        <form th:action="@{/logout}" id="logout" th:method="get">
+            <button type="submit" class="btn btn-warning">Wyloguj</button>
+        </form>
+        <div sec:authorize="hasRole('USER')">Zalogowano jako użytkownik</div>
+        <div sec:authorize="hasRole('ADMIN')">Zalogowano jako administrator</div>
+        <div sec:authorize="hasRole('USER') and hasRole('ADMIN')">Zalogowano jako superurzytkownik</div>
+    </div>
+    <div th:replace="~{fragments/functionalities :: functionalities}"></div>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+<form method="get" action="zamow_lista">
+    Odlot :
+    <select th:object="${zmiasto}" name="zmiasto">
+        <option th:each="miasto : ${listaMiasto}"
+                th:value="${miasto.id}"
+                th:text="${miasto.kraj.nazwa} + ' : ' + ${miasto.nazwa}"
+        />
+    </select><br>
+    Przylot :
+    <select th:object="${domiasto}" name="domiasto">
+        <option th:each="miasto : ${listaMiasto}"
+                th:value="${miasto.id}"
+                th:text="${miasto.kraj.nazwa} + ' : ' + ${miasto.nazwa}"
+        />
+    </select><br>
+    </div>
+    <input type="date" th:object="${data}" name="data" th:text="${#temporals.format(calendar,'dd-MM-yyyy')}">
+    <input type="submit" value="Dalej">
+</form>
+</body>
+</html>
